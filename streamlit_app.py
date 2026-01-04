@@ -3,9 +3,6 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import folium
-import plotly.express as px
-import plotly.graph_objects as go
-from plotly.subplots import make_subplots
 from streamlit_folium import st_folium
 from math import radians, cos, sin, asin, sqrt
 from scipy.signal import butter, filtfilt
@@ -106,22 +103,31 @@ askelpituus = total_distance*1000/askelmaara # askelmäärä metreissä
 st.title("Tulokset")
 
 st.header("Lasketut tulokset")
-st.subheader("Askelmäärät")
-st.write("Askelmäärä laskettuna suodatetusta kiihtyvyysdatasta: {jaksot:.0f}")
-st.write("Askelmäärä laskettuna Fourier-analyysin perusteella: {steps:.0f}")
 
-st.subheader("GPS tulokset")
-st.write("Keskinopeus: {keskinopeus:.2f} m/s")
-st.write("Kuljettu matka: {total_distance:.3f} km")
 
-st.subheader("Askelpituus")
-st.write("Askelpituus: {askelpituus: .2f} m")
+st.write("Askelmäärä laskettuna suodatetusta kiihtyvyysdatasta: **{jaksot:.0f}**")
+st.write("Askelmäärä laskettuna Fourier-analyysin perusteella: **{steps:.0f}**")
+st.write("Keskinopeus: **{keskinopeus:.2f}** m/s")
+st.write("Kuljettu matka: **{total_distance:.3f}** km")
+st.write("Askelpituus: **{askelpituus:.2f}** m")
 
 
 
 st.header("Kuvaajat")
 
 st.subheader("Suodatettu kiihtyvyysdatan y-komponentti")
+
+acceleration_df = pd.DataFrame({
+    'Time': df['Time (s)'],
+    'Raakadata': data,
+    'Suodatettu data': data_filt
+})
+st.line_chart(acceleration_df, x='Time', y=['Raakadata','Suodatettu data'], use_container_width=True, height=400)
+
+
+
+
+
 fig1, ax1 = plt.subplots(figsize=(12,4))
 ax1.plot(df['Time (s)'][:1000], data[:1000], label='data', alpha=0.7)
 ax1.plot(df['Time (s)'][:1000], data_filt[:1000], label='suodatettu data', linewidth=2)
@@ -145,7 +151,7 @@ st.pyplot(fig2)
 st.subheader("Karttakuva")
 lat1 = loc['Latitude (°)'].mean()
 long1 = loc['Longitude (°)'].mean()
-m = folium.Map(location=[lat1, long1], zoom_start=17)
+m = folium.Map(location=[lat1, long1], zoom_start=15)
 folium.PolyLine(loc[['Latitude (°)', 'Longitude (°)']], 
                color='red', weight=5).add_to(m)
 st_folium(m, width=800, height=500)
