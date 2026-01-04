@@ -105,11 +105,11 @@ st.title("Tulokset")
 st.header("Lasketut tulokset")
 
 
-st.write("Askelmäärä laskettuna suodatetusta kiihtyvyysdatasta:",jaksot)
-st.write("Askelmäärä laskettuna Fourier-analyysin perusteella: ",steps)
-st.write("Keskinopeus: ",keskinopeus,"m/s")
-st.write("Kuljettu matka: ",total_distance, "km")
-st.write("Askelpituus: ",askelpituus,"m")
+st.write("Askelmäärä laskettuna suodatetusta kiihtyvyysdatasta:", f"{jaksot:.0f}")
+st.write("Askelmäärä laskettuna Fourier-analyysin perusteella: ",f"{steps:.0f}")
+st.write("Keskinopeus: ",f"{keskinopeus:.2f}","m/s")
+st.write("Kuljettu matka: ",f"{total_distance:.2f}","km")
+st.write("Askelpituus: ",f"{askelpituus:.2f}","m")
 
 
 
@@ -119,10 +119,9 @@ st.subheader("Suodatettu kiihtyvyysdatan y-komponentti")
 
 acceleration_df = pd.DataFrame({
     'Time': df['Time (s)'],
-    'Raakadata': data,
     'Suodatettu data': data_filt
 })
-st.line_chart(acceleration_df, x='Time', y=['Raakadata','Suodatettu data'], 
+st.line_chart(acceleration_df, x='Time', y=['Suodatettu data'], 
               use_container_width=True, height=400)
 
 st.subheader("Tehospektri")
