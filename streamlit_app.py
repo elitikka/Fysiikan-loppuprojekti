@@ -7,8 +7,8 @@ from streamlit_folium import st_folium
 from math import radians, cos, sin, asin, sqrt
 
 
-urlLinear = "https://raw.githubusercontent.com/elitikka/Fysiikan-loppuprojekti/main/Linear%20Acceleration.csv"
-urlLocation = "https://raw.githubusercontent.com/elitikka/Fysiikan-loppuprojekti/main/Location.csv"
+urlLinear = "https://raw.githubusercontent.com/elitikka/Fysiikan-loppuprojekti/main/Data/Linear%20Acceleration.csv"
+urlLocation = "https://raw.githubusercontent.com/elitikka/Fysiikan-loppuprojekti/main/Data/Location.csv"
 
 df = pd.read_csv(urlLinear)
 loc = pd.read_csv(urlLocation)
