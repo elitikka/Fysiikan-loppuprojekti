@@ -100,7 +100,7 @@ askelpituus = total_distance*1000/askelmaara # askelmäärä metreissä
 
 # Print values:
 
-st.title("Tulokset")
+st.title("Fysiikan loppuprojekti: Tulokset")
 
 st.header("Lasketut tulokset")
 
