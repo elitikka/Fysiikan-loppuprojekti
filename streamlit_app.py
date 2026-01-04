@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import folium
 from streamlit_folium import st_folium
 from math import radians, cos, sin, asin, sqrt
+from scipy.signal import butter, filtfilt
 
 
 urlLinear = "https://raw.githubusercontent.com/elitikka/Fysiikan-loppuprojekti/main/Data/Linear%20Acceleration.csv"
