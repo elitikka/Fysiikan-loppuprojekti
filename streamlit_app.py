@@ -105,11 +105,11 @@ st.title("Tulokset")
 st.header("Lasketut tulokset")
 
 
-st.write("Askelmäärä laskettuna suodatetusta kiihtyvyysdatasta: **{jaksot:.0f}**")
-st.write("Askelmäärä laskettuna Fourier-analyysin perusteella: **{steps:.0f}**")
-st.write("Keskinopeus: **{keskinopeus:.2f}** m/s")
-st.write("Kuljettu matka: **{total_distance:.3f}** km")
-st.write("Askelpituus: **{askelpituus:.2f}** m")
+st.write("Askelmäärä laskettuna suodatetusta kiihtyvyysdatasta:",jaksot)
+st.write("Askelmäärä laskettuna Fourier-analyysin perusteella: ",steps)
+st.write("Keskinopeus: ",keskinopeus,"m/s")
+st.write("Kuljettu matka: ",total_distance, "km")
+st.write("Askelpituus: ",askelpituus,"m")
 
 
 
