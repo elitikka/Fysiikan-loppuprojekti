@@ -122,31 +122,16 @@ acceleration_df = pd.DataFrame({
     'Raakadata': data,
     'Suodatettu data': data_filt
 })
-st.line_chart(acceleration_df, x='Time', y=['Raakadata','Suodatettu data'], use_container_width=True, height=400)
-
-
-
-
-
-fig1, ax1 = plt.subplots(figsize=(12,4))
-ax1.plot(df['Time (s)'][:1000], data[:1000], label='data', alpha=0.7)
-ax1.plot(df['Time (s)'][:1000], data_filt[:1000], label='suodatettu data', linewidth=2)
-ax1.set_xlim(0,8)
-ax1.set_ylim(-3,3)
-ax1.set_xlabel('Aika [s]')
-ax1.set_ylabel('Kiihtyvyys y [m/s²]')
-ax1.legend()
-ax1.grid()
-st.pyplot(fig1)
+st.line_chart(acceleration_df, x='Time', y=['Raakadata','Suodatettu data'], 
+              use_container_width=True, height=400)
 
 st.subheader("Tehospektri")
-fig2, ax2 = plt.subplots(figsize=(12,4))
-ax2.plot(freq[L], psd[L].real)
-ax2.set_xlabel('Taajuus [Hz]')
-ax2.set_ylabel('Teho')
-ax2.set_xlim(0,10)
-ax2.grid()
-st.pyplot(fig2)
+psd_df = pd.DataFrame({
+    'Taajuus (Hz)': freq[L],
+    'Tehospektri': psd[L].real
+})
+st.line_chart(psd_df, x='Taajuus (Hz)', y='Teho',
+              use_container_width=True, height = 400)
 
 st.subheader("Karttakuva")
 lat1 = loc['Latitude (°)'].mean()
