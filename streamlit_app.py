@@ -3,6 +3,9 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import folium
+import plotly.express as px
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
 from streamlit_folium import st_folium
 from math import radians, cos, sin, asin, sqrt
 from scipy.signal import butter, filtfilt
@@ -13,8 +16,6 @@ urlLocation = "https://raw.githubusercontent.com/elitikka/Fysiikan-loppuprojekti
 
 df = pd.read_csv(urlLinear)
 loc = pd.read_csv(urlLocation)
-
-
 
 # Laskelmat
 # Alipäästösuodatin ja askelmäärä
@@ -144,6 +145,7 @@ st.pyplot(fig2)
 st.subheader("Karttakuva")
 lat1 = loc['Latitude (°)'].mean()
 long1 = loc['Longitude (°)'].mean()
-my_map = folium.Map(location=[lat1,long1], zoom_start=17)
-folium.PolyLine(loc[['Latitude (°)', 'Longitude (°)']], color='red', weight=3).add_to(my_map)
-st_folium(my_map, width=700, height=500)
+m = folium.Map(location=[lat1, long1], zoom_start=17)
+folium.PolyLine(loc[['Latitude (°)', 'Longitude (°)']], 
+               color='red', weight=5, opacity=0.8).add_to(m)
+st_folium(m, width=800, height=500)
