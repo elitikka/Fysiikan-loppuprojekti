@@ -147,5 +147,5 @@ lat1 = loc['Latitude (°)'].mean()
 long1 = loc['Longitude (°)'].mean()
 m = folium.Map(location=[lat1, long1], zoom_start=17)
 folium.PolyLine(loc[['Latitude (°)', 'Longitude (°)']], 
-               color='red', weight=5, opacity=0.8).add_to(m)
+               color='red', weight=100, opacity=0.8).add_to(m)
 st_folium(m, width=800, height=500)
