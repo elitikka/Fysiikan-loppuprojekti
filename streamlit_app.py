@@ -117,9 +117,10 @@ st.header("Kuvaajat")
 
 st.subheader("Suodatettu kiihtyvyysdatan y-komponentti")
 
+mask_60s = df['Time (s)'] <= 60
 acceleration_df = pd.DataFrame({
-    'Time': df['Time (s)'],
-    'Suodatettu data': data_filt
+    'Time': df['Time (s)'][mask_60s],
+    'Suodatettu data': data_filt[mask_60s]
 })
 st.line_chart(acceleration_df, x='Time', y=['Suodatettu data'], 
               use_container_width=True, height=400)
@@ -127,7 +128,7 @@ st.line_chart(acceleration_df, x='Time', y=['Suodatettu data'],
 st.subheader("Tehospektri")
 psd_df = pd.DataFrame({
     'Taajuus (Hz)': freq[L],
-    'Tehospektri': psd[L].real
+    'Teho': psd[L].real
 })
 st.line_chart(psd_df, x='Taajuus (Hz)', y='Teho',
               use_container_width=True, height = 400)
