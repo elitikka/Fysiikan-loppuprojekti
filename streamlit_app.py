@@ -115,7 +115,7 @@ st.write("Askelpituus: ",f"{askelpituus:.2f}","m")
 
 st.header("Kuvaajat")
 
-st.subheader("Suodatettu kiihtyvyysdatan y-komponentti (ensimmäiset 30 s)")
+st.subheader("Suodatettu kiihtyvyysdatan y-komponentti (30 s)")
 
 mask_30s = df['Time (s)'] <= 30
 acceleration_df = pd.DataFrame({
