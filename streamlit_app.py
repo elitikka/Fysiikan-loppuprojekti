@@ -119,10 +119,10 @@ st.subheader("Suodatettu kiihtyvyysdatan y-komponentti (30 s)")
 
 mask_30s = df['Time (s)'] <= 30
 acceleration_df = pd.DataFrame({
-    'Time': df['Time (s)'][mask_30s],
+    'Aika': df['Time (s)'][mask_30s],
     'Suodatettu data': data_filt[mask_30s]
 })
-st.line_chart(acceleration_df, x='Time', y=['Suodatettu data'], 
+st.line_chart(acceleration_df, x='Aika', y=['Suodatettu data'], 
               use_container_width=True, height=400)
 
 st.subheader("Tehospektri")
