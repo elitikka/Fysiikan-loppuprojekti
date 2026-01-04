@@ -115,12 +115,12 @@ st.write("Askelpituus: ",f"{askelpituus:.2f}","m")
 
 st.header("Kuvaajat")
 
-st.subheader("Suodatettu kiihtyvyysdatan y-komponentti")
+st.subheader("Suodatettu kiihtyvyysdatan y-komponentti (ensimmäiset 30 s)")
 
-mask_60s = df['Time (s)'] <= 60
+mask_30s = df['Time (s)'] <= 30
 acceleration_df = pd.DataFrame({
-    'Time': df['Time (s)'][mask_60s],
-    'Suodatettu data': data_filt[mask_60s]
+    'Time': df['Time (s)'][mask_30s],
+    'Suodatettu data': data_filt[mask_30s]
 })
 st.line_chart(acceleration_df, x='Time', y=['Suodatettu data'], 
               use_container_width=True, height=400)
