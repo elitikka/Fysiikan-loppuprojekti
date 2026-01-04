@@ -123,7 +123,7 @@ acceleration_df = pd.DataFrame({
     'Suodatettu data': data_filt[mask_30s]
 })
 st.line_chart(acceleration_df, x='Aika', y=['Suodatettu data'], 
-              use_container_width=True, height=400)
+              width='stretch', height=400)
 
 st.subheader("Tehospektri")
 psd_df = pd.DataFrame({
@@ -131,7 +131,7 @@ psd_df = pd.DataFrame({
     'Teho': psd[L].real
 })
 st.line_chart(psd_df, x='Taajuus (Hz)', y='Teho',
-              use_container_width=True, height = 400)
+              width='stretch', height = 400)
 
 st.subheader("Karttakuva")
 lat1 = loc['Latitude (°)'].mean()
